@@ -3,6 +3,18 @@ let loadPokemon = 30;
 let results;
 let infiniteScrollActive = "active";
 
+/*todo 
+- funktionen kürzen
+- neue anzeige keine pokemon gefunden
+- scrollen bei overlaxy deaktivieren
+- vorheriges / nächstes Pokemon
+- moves reiter
+
+css 
+animation hover karte
+animation pokemon karte und wechsel (vorhang)
+ */
+
 async function getData() {
   const url = "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0";
   const response = await fetch(url);
@@ -13,9 +25,12 @@ async function getData() {
 
 async function renderPokemon() {
   const main = document.getElementById("main");
+  const loadedPokemonsContainer = document.getElementById("loaded-Pokemons");
+
   for (let i = loadedPokemon; i < loadPokemon; i++) {
     const pokemon = results[i];
     loadedPokemon++;
+    loadedPokemonsContainer.innerHTML = loadedPokemon;
     main.innerHTML += /*html*/ `
       ${await getPokemonData(pokemon.url)}
     `;
@@ -41,12 +56,16 @@ async function searchPokemon() {
   const searchInput = document
     .getElementById("search-input")
     .value.toLowerCase();
+  const backButton = document.getElementById("back-button");
+  backButton.classList.remove("d-none");
   infiniteScrollActive = "notactive";
   main.innerHTML = ``;
+  loadedPokemon = 0;
   for (let i = 0; i < results.length; i++) {
     const pokemon = results[i];
     const pokemonName = pokemon.name;
     if (pokemonName.includes(searchInput)) {
+      loadedPokemon++;
       await renderSearchedPokemon(pokemon);
     }
   }
@@ -54,7 +73,14 @@ async function searchPokemon() {
 
 async function renderSearchedPokemon(pokemon) {
   const main = document.getElementById("main");
+  const loadedPokemonsContainer = document.getElementById("loaded-Pokemons");
+  loadedPokemonsContainer.innerHTML = loadedPokemon;
   main.innerHTML += await getPokemonData(pokemon.url);
+}
+
+function noPokemonFound() {
+  const main = document.getElementById("main");
+  main.innerHTML = "leider keine Pokemon gefunden";
 }
 
 async function showOverview(id) {
@@ -65,11 +91,27 @@ async function showOverview(id) {
   fillCard(pokemon);
   getTypes(pokemon);
   renderBars(pokemon);
-  console.log(pokemon);
+  setTimeout(showCard, 1);
+}
+
+async function nextPokemon(id) {
+  id = id + 1;
+  hideCard();
+  setTimeout(showOverview.bind(null, id), 1200);
+}
+
+function showCard() {
+  const card = document.getElementById("detailes-card");
+  card.classList.add("show");
+}
+
+function hideCard() {
+  const card = document.getElementById("detailes-card");
+  card.classList.remove("show");
 }
 
 function fillCard(pokemon) {
-  const container = document.getElementById("detailes-card");
+  const container = document.getElementById("overlay-bg");
   container.innerHTML = getDetailCard(pokemon);
 }
 

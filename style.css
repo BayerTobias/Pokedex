@@ -16,8 +16,17 @@ span {
 
 header {
   width: 100%;
+  position: sticky;
+  top: 0;
+  padding: 16px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  background-color: white;
+}
+
+.logo {
+  width: 150px;
 }
 
 main {
@@ -33,7 +42,6 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  background-color: bisque;
   width: 300px;
   height: 300px;
   border-radius: 48px;
@@ -50,7 +58,7 @@ main {
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.8);
   z-index: 10;
   display: flex;
   justify-content: center;
@@ -58,21 +66,53 @@ main {
 }
 
 #detailes-card {
-  width: 350px;
-  height: 600px;
-  background-color: beige;
+  width: 0px;
+  height: auto;
+  transition: width 1s ease-in-out;
+  /* white-space: nowrap; */
+  overflow: hidden;
+  border-radius: 36px;
 }
 
-#detailes-card > div > img {
+.show {
+  width: 350px !important;
+}
+
+#card-header {
+  width: 350px;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.img-type-box {
+  width: 350px;
+  display: flex;
+  justify-content: space-between;
+  transition: width 1s ease-in-out;
+}
+
+#card-img {
   width: 250px;
 }
 
 .lower-card {
-  width: 100%;
+  width: 350px;
   background-color: white;
   border-top-left-radius: 36px;
   border-top-right-radius: 36px;
   padding: 16px;
+}
+
+.arrow-box {
+  display: flex;
+  justify-content: space-around;
+}
+
+.arrow-box > img {
+  width: 36px;
+  padding: 8px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .d-none {
@@ -81,7 +121,7 @@ main {
 
 .myProgress {
   width: 100%;
-  background-color: grey;
+  background-color: rgb(230, 225, 225);
   margin: 8px 0;
   overflow-y: visible;
 }

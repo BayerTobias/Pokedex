@@ -9,10 +9,11 @@
     <script src="HTML-Tamplates.js"></script>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="types.css" />
+    <link rel="shortcut icon" href="img/fav.png" type="image/x-icon" />
   </head>
   <body onload="getData()">
     <header>
-      <img src="" alt="pokemno_logo" />
+      <img class="logo" src="img/logo.png" alt="pokemno_logo" />
       <form onsubmit="searchPokemon(); return false;">
         <input
           required
@@ -24,18 +25,16 @@
         />
         <button>search</button>
       </form>
-      <div><span id="loaded-Pokemons">65</span> / 1281 Pokemon geladen</div>
+      <div><span id="loaded-Pokemons"></span> Pokemon geladen.</div>
     </header>
     <main id="main"></main>
-    <button onclick="reloadPage()">Back</button>
+    <button id="back-button" class="d-none" onclick="reloadPage()">Back</button>
     <section>
       <div
         onclick="closeOverlay()"
         id="overlay-bg"
         class="overlay-background d-none"
-      >
-        <div onclick="doNotClose(event)" id="detailes-card"></div>
-      </div>
+      ></div>
     </section>
   </body>
 </html>

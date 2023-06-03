@@ -10,14 +10,22 @@ function getMiniCard(name, imgUrl, id, type) {
 
 function getDetailCard(pokemon) {
   return /*html*/ `
-  <div id="card-header">${pokemon.name}</div>
-      <div>
-        <div id="card-types"></div>
-        <img id="card-img" src="${pokemon.sprites.other["official-artwork"].front_default}" alt="pokemon-img" />
+    <div  onclick="doNotClose(event)" id="detailes-card" class="${pokemon.types[0].type.name}">
+      <div class="uppper-card">
+      <h3 id="card-header">${pokemon.name}</h3>
+        <div class="img-type-box">
+          <div id="card-types"></div>
+          <img id="card-img" src="${pokemon.sprites.other["official-artwork"].front_default}" alt="pokemon-img" />
+        </div>
       </div>
       <div class="lower-card">
         <div><a href="">Stats</a><a href="">Moves</a></div>
-        <div id="info-box"></div>        
+        <div id="info-box"></div>   
+        <div class="arrow-box">
+          <img onclick="previousPokemon(${pokemon.id})" src="./img/arrow-left-solid.svg" alt="left">
+          <img onclick="nextPokemon(${pokemon.id})" src="./img/arrow-right-solid.svg" alt="right">
+        </div>     
+    </div>
 `;
 }
 

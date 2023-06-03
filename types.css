@@ -1,71 +1,71 @@
 .normal {
-  background-color: rgba(168, 168, 120, 0.4);
+  background-color: rgb(216, 216, 168);
 }
 
 .fire {
-  background-color: rgba(240, 128, 48, 0.4);
+  background-color: rgb(255, 192, 112);
 }
 
 .water {
-  background-color: rgba(104, 144, 240, 0.4);
+  background-color: rgb(152, 184, 255);
 }
 
 .grass {
-  background-color: rgba(120, 200, 80, 0.4);
+  background-color: rgb(176, 232, 120);
 }
 
 .electric {
-  background-color: rgba(248, 208, 48, 0.4);
+  background-color: rgb(255, 248, 120);
 }
 
 .ice {
-  background-color: rgba(152, 216, 216, 0.4);
+  background-color: rgb(200, 240, 240);
 }
 
 .fighting {
-  background-color: rgba(192, 48, 40, 0.4);
+  background-color: rgb(240, 120, 112);
 }
 
 .poison {
-  background-color: rgba(160, 64, 160, 0.4);
+  background-color: rgb(208, 128, 208);
 }
 
 .ground {
-  background-color: rgba(224, 192, 104, 0.4);
+  background-color: rgb(248, 224, 144);
 }
 
 .flying {
-  background-color: rgba(168, 144, 240, 0.4);
+  background-color: rgb(192, 184, 255);
 }
 
 .psychic {
-  background-color: rgba(248, 88, 136, 0.4);
+  background-color: rgb(255, 144, 184);
 }
 
 .bug {
-  background-color: rgba(168, 184, 32, 0.4);
+  background-color: rgb(200, 216, 88);
 }
 
 .rock {
-  background-color: rgba(184, 160, 56, 0.4);
+  background-color: rgb(224, 200, 112);
 }
 
 .ghost {
-  background-color: rgba(112, 88, 152, 0.4);
+  background-color: rgb(160, 136, 208);
 }
 
 .dragon {
-  background-color: rgba(112, 56, 248, 0.4);
+  background-color: rgb(160, 104, 255);
 }
 
 .dark {
-  background-color: rgba(112, 88, 72, 0.4);
+  background-color: rgb(160, 136, 112);
 }
 
 .steel {
-  background-color: rgba(184, 184, 208, 0.4);
+  background-color: rgb(224, 224, 248);
 }
 
 .fairy {
-  background-color: rgba(238, 153, 172, 0.4);
+  background-color: rgb(255, 203, 216);
 }
