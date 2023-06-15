@@ -9,26 +9,41 @@
     <script src="HTML-Tamplates.js"></script>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="types.css" />
+    <link rel="stylesheet" href="roboto.css" />
     <link rel="shortcut icon" href="img/fav.png" type="image/x-icon" />
   </head>
   <body onload="getData()">
     <header>
-      <img class="logo" src="img/logo.png" alt="pokemno_logo" />
+      <a href="index.html">
+        <img class="logo" src="img/logo.png" alt="pokemno_logo" />
+      </a>
       <form onsubmit="searchPokemon(); return false;">
         <input
           required
           minlength="3"
-          placeholder="pokemon..."
+          placeholder="Pokemon..."
           type="text"
           name=""
           id="search-input"
         />
-        <button>search</button>
+        <button class="search-button">
+          <img src="./img/magnifying-glass-solid.svg" alt="" />
+        </button>
       </form>
-      <div><span id="loaded-Pokemons"></span> Pokemon geladen.</div>
+      <div class="load-display">
+        <b id="loaded-Pokemons"></b> Pokemon geladen.
+      </div>
     </header>
     <main id="main"></main>
     <button id="back-button" class="d-none" onclick="reloadPage()">Back</button>
+    <a href="#">
+      <img
+        class="d-none"
+        id="scroll-up-button"
+        src="./img/arrow-up-solid.svg"
+        alt=""
+      />
+    </a>
     <section>
       <div
         onclick="closeOverlay()"

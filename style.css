@@ -1,5 +1,7 @@
 * {
   box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: roboto, sans-serif;
 }
 
 body {
@@ -7,6 +9,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: rgb(95, 95, 95);
 }
 
 b,
@@ -14,7 +17,59 @@ span {
   text-transform: capitalize;
 }
 
+h3 {
+  margin: 12px 0;
+}
+form {
+  display: flex;
+  position: relative;
+}
+
+input {
+  font-size: 16px;
+  height: 36px;
+  border-radius: 18px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border: none;
+  margin-right: 4px;
+  outline: none;
+}
+
+.search-button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: white;
+  border: none;
+}
+
+#back-button {
+  cursor: pointer;
+  background-color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  color: rgb(95, 95, 95);
+  margin-bottom: 36px;
+}
+
+#back-button:hover {
+  box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.5);
+}
+
+button img {
+  width: 16px;
+}
+
 header {
+  z-index: 99;
   width: 100%;
   position: sticky;
   top: 0;
@@ -23,33 +78,78 @@ header {
   justify-content: space-between;
   align-items: center;
   background-color: white;
+  background-color: rgb(70, 70, 70);
+  color: white;
 }
 
 .logo {
   width: 150px;
+  cursor: pointer;
 }
 
 main {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 8px;
-  margin-top: 50px;
+  gap: 12px;
+  padding: 36px;
+  color: white;
+}
+
+#scroll-up-button {
+  width: 48px;
+  height: 48px;
+  padding: 8px;
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  transition: transform 0.2s ease-in-out;
+  border-radius: 50%;
+  background-color: rgb(229, 229, 229);
+}
+
+#scroll-up-button:hover {
+  transform: scale(1.2);
 }
 
 .mini-card {
+  color: rgb(70, 70, 70);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
   width: 300px;
   height: 300px;
-  border-radius: 48px;
+  border-radius: 36px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.mini-card-text-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mini-card b {
+  font-size: 24px;
+}
+
+.mini-card > img {
+  transition: transform 0.2s ease-in-out;
+}
+
+.mini-card:hover img {
+  transform: scale(1.2);
 }
 
 .mini-card img {
   width: 200px;
   height: 200px;
+}
+
+.pokemon-id {
+  font-weight: 300;
 }
 
 .overlay-background {
@@ -63,15 +163,25 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 100;
 }
 
 #detailes-card {
   width: 0px;
-  height: auto;
-  transition: width 1s ease-in-out;
-  /* white-space: nowrap; */
+  height: 700px;
+  transition: width 0.8s ease-in-out;
   overflow: hidden;
   border-radius: 36px;
+  position: relative;
+}
+
+#close-button {
+  width: 28px;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  cursor: pointer;
+  opacity: 0.6;
 }
 
 .show {
@@ -88,11 +198,27 @@ main {
   width: 350px;
   display: flex;
   justify-content: space-between;
-  transition: width 1s ease-in-out;
+  transition: width 0.8s ease-in-out;
+}
+
+#card-types {
+  display: flex;
+  flex-direction: column;
+  margin-left: 16px;
+}
+
+#card-types > span {
+  padding: 4px;
+  margin-bottom: 4px;
+  border-radius: 8px;
+  border: 1px solid lightgray;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 #card-img {
   width: 250px;
+  height: 250px;
 }
 
 .lower-card {
@@ -101,6 +227,38 @@ main {
   border-top-left-radius: 36px;
   border-top-right-radius: 36px;
   padding: 16px;
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.4);
+}
+
+.lower-card-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.lower-card-header > span {
+  padding: 4px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.lower-card-header span:hover {
+  text-decoration: underline;
+}
+
+#info-box {
+  height: 290px;
+  margin: 8px 0;
+  overflow-y: auto;
+  text-transform: capitalize;
+}
+
+.move {
+  padding: 4px;
+  text-align: center;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  margin: 8px;
 }
 
 .arrow-box {
@@ -113,6 +271,7 @@ main {
   padding: 8px;
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 .d-none {
@@ -121,8 +280,8 @@ main {
 
 .myProgress {
   width: 100%;
-  background-color: rgb(230, 225, 225);
-  margin: 8px 0;
+  background-color: rgb(240, 240, 240);
+  margin-bottom: 8px;
   overflow-y: visible;
 }
 
@@ -145,13 +304,75 @@ main {
 }
 
 #special-attack-bar {
-  background-color: rgb(128, 0, 128);
+  background-color: rgb(156, 0, 156);
 }
 
 #special-defense-bar {
-  background-color: rgb(0, 0, 255);
+  background-color: rgb(52, 52, 255);
 }
 
 #speed-bar {
   background-color: rgb(255, 255, 0);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(70, 70, 70);
+  border-radius: 3px;
+}
+
+@media (max-width: 650px) {
+  .logo {
+    width: 100px;
+  }
+
+  .search-button {
+    position: absolute;
+    right: 0px;
+  }
+
+  input {
+    padding-right: 36px;
+    width: 150px;
+  }
+}
+
+@media (max-width: 500px) {
+  .load-display {
+    display: none;
+  }
+}
+
+@media (max-width: 375px) {
+  #detailes-card {
+    height: 650px;
+  }
+
+  #card-header {
+    width: 300px;
+  }
+
+  .img-type-box {
+    width: 300px;
+  }
+
+  #card-img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .lower-card {
+    width: 300px;
+  }
+
+  .show {
+    width: 300px !important;
+  }
 }
