@@ -26,7 +26,7 @@ async function renderPokemon() {
 }
 
 async function loadMorePokemon() {
-  loadPokemon = loadPokemon + 200;
+  loadPokemon = loadPokemon + 30;
   await renderPokemon();
 }
 
