@@ -1,13 +1,31 @@
 function getMiniCard(name, imgUrl, id, type) {
-  return /*html*/ `
-  <div onclick="showOverview(${id})" class="mini-card ${type}">
-    <div class="mini-card-text-box">
-      <b>${name}</b>
-      <i class="pokemon-id">#${id}</i>
-    </div>
-    <img src="${imgUrl}" alt="pokemon img">
-  </div>
-  `;
+  const div = document.createElement("div");
+  div.classList.add("mini-card", type);
+  div.onclick = function () {
+    showOverview(id);
+  };
+
+  const textBoxDiv = document.createElement("div");
+  textBoxDiv.classList.add("mini-card-text-box");
+
+  const nameElement = document.createElement("b");
+  nameElement.textContent = name;
+
+  const idElement = document.createElement("i");
+  idElement.classList.add("pokemon-id");
+  idElement.textContent = `#${id}`;
+
+  textBoxDiv.appendChild(nameElement);
+  textBoxDiv.appendChild(idElement);
+
+  const img = document.createElement("img");
+  img.src = imgUrl;
+  img.alt = "pokemon img";
+
+  div.appendChild(textBoxDiv);
+  div.appendChild(img);
+
+  return div;
 }
 
 function getDetailCard(pokemon) {

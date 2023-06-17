@@ -169,7 +169,7 @@ main {
 #detailes-card {
   width: 0px;
   height: 700px;
-  transition: width 0.8s ease-in-out;
+  transition: width 0.5s ease-in-out;
   overflow: hidden;
   border-radius: 36px;
   position: relative;
@@ -353,6 +353,7 @@ main {
 @media (max-width: 375px) {
   #detailes-card {
     height: 650px;
+    width: 0;
   }
 
   #card-header {

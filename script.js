@@ -1,11 +1,7 @@
 let loadedPokemon = 0;
 let loadPokemon = 30;
 let results;
-let infiniteScrollActive = "active";
-
-/*todo 
-  responsive
- */
+let infiniteScrollActive = "notActive";
 
 async function getData() {
   const url = "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0";
@@ -23,14 +19,14 @@ async function renderPokemon() {
     const pokemon = results[i];
     loadedPokemon++;
     loadedPokemonsContainer.innerHTML = loadedPokemon;
-    main.innerHTML += /*html*/ `
-      ${await getPokemonData(pokemon.url)}
-    `;
+    let card = await getPokemonData(pokemon.url);
+    main.appendChild(card);
   }
+  infiniteScrollActive = "active";
 }
 
 async function loadMorePokemon() {
-  loadPokemon = loadPokemon + 30;
+  loadPokemon = loadPokemon + 200;
   await renderPokemon();
 }
 
@@ -41,7 +37,8 @@ async function getPokemonData(url) {
   const name = responseAsJson.name;
   const id = responseAsJson.id;
   const type = responseAsJson.types[0].type.name;
-  return getMiniCard(name, imgUrl, id, type);
+  const card = getMiniCard(name, imgUrl, id, type);
+  return card;
 }
 
 async function searchPokemon() {
@@ -117,13 +114,13 @@ async function fetchPokemonData(id) {
 async function nextPokemon(id) {
   id = id + 1;
   hideCard();
-  setTimeout(showOverview.bind(null, id), 1200);
+  setTimeout(showOverview.bind(null, id), 600);
 }
 
 async function previousPokemon(id) {
   id = id - 1;
   hideCard();
-  setTimeout(showOverview.bind(null, id), 1200);
+  setTimeout(showOverview.bind(null, id), 600);
 }
 
 function showCloseButton() {
@@ -134,7 +131,7 @@ function showCloseButton() {
 function showCard() {
   const card = document.getElementById("detailes-card");
   card.classList.add("show");
-  setTimeout(showCloseButton, 800);
+  setTimeout(showCloseButton, 500);
 }
 
 function hideCard() {
@@ -222,7 +219,6 @@ async function infiniteScroll() {
   ) {
     infiniteScrollActive = "notactive";
     await loadMorePokemon();
-    infiniteScrollActive = "active";
   }
 }
 
